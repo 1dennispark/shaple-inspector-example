@@ -1,0 +1,1 @@
+# shaple-inspector-example
