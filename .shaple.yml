@@ -1,0 +1,37 @@
+description: "Example of a shaple.yml file"
+use-cases:
+  - text2video:
+      op: "text2vid"
+      description: "Generate a video from text"
+ops:
+  - text2vid:
+      inputs:
+        - text
+      outputs:
+        - video
+      steps:
+        - text2img
+        - img2img
+        - img2vid
+      code: sdxl_example.run:run_inference
+  - img2vid:
+      model: "stable-video-diffusion-img2vid-xt"
+      inputs:
+        - image
+      outputs:
+        - video
+      code: sdxl_example.run:sdxl_video
+  - text2img:
+      model: "stable-diffusion-xl-base-1.0"
+      inputs:
+        - text
+      outputs:
+        - image
+      code: sdxl_example.run:sdxl_base
+  - img2img:
+      model: "stable-diffusion-xl-refiner-1.0"
+      inputs:
+        - image
+      outputs:
+        - image
+      code: sdxl_example.run:sdxl_refiner
